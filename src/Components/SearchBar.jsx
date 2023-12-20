@@ -1,11 +1,14 @@
-import { useState } from "react";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { useContext, useState } from "react";
+import { collection, query, where, getDocs, getDoc, doc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
+import { AuthContext } from "../store/AuthContext";
 
 export default function SearchBar() {
   const [userName, setUserName] = useState("");
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
+
+  const {currentUser} = useContext(AuthContext);
   function handleChange(event) {
     setUserName(event.target.value);
   }
@@ -20,17 +23,49 @@ export default function SearchBar() {
         setUser(doc.data());
       });
     } catch (error) {
-      setError(error);
+      setError(true);
     }
   }
   function handleKey(event) {
     event.code === "Enter" && handleSearch();
+  }
+  async function handleClickUser() {
+    const combinedId = currentUser.uid > user.uid ? (currentUser.uid + user.uid) : (user.uid + currentUser.uid)
+    try{
+      const res = await getDoc(doc(db, "chats", combinedId))
+      if(!res.exists()){
+        await setDoc(doc(db, "chats", combinedId), {
+          messages: []
+        })
+        await updateDoc(doc(db, "userChats", currentUser.uid),{
+          [combinedId+".userInfo"]: {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL
+          },
+          [combinedId+".date"]: serverTimestamp()
+        })
+        await updateDoc(doc(db,"userChats", user.uid),{
+          [combinedId+".userInfo"]: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL
+          },
+          [combinedId+".date"]: serverTimestamp()
+        })
+      }
+    }catch(error){
+      setError(true);
+    }
+    setUser(null);
+    setUserName("");
   }
   return (
     <div className="searchbar">
       <div className="serachform">
         <input
           type="text"
+          value={userName}
           placeholder="search the person"
           onKeyDown={handleKey}
           onChange={handleChange}
@@ -38,7 +73,7 @@ export default function SearchBar() {
       </div>
       {error && <span>Failed to find</span>}
       {user && (
-        <div className="userChat">
+        <div className="userChat" onClick={handleClickUser}>
           <img
             src={user.photoURL}
             alt=""

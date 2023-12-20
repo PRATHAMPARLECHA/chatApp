@@ -316,6 +316,11 @@
                 display: flex;
                 align-items: center;
                 gap: 8px;
+
+                button{
+                    border: none;
+                    background-color: transparent;
+                }
             }
         }
     }

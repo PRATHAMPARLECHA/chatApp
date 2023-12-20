@@ -3,17 +3,17 @@ import add from "../image/add_user_profile_person_avatar_icon_196535.png";
 
 import Messages from "./Messages.jsx";
 import Input from "./Input.jsx";
+import { useContext } from "react";
+import { UserContext } from "../store/userContext.jsx";
 
 export default function Chats() {
+  const { data } = useContext(UserContext);
   return (
     <div className="chats">
       <div className="userInfo">
         <div className="userDetails">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-mMLFPPPzi23Jjj5wpQHVALh3VCqMODz69SZAdM2t0SoyqHo-hhxfGCpMKg&s"
-            alt=""
-          />
-          <span>Naman</span>
+          <img src={data.userInfo?.photoURL} alt="" />
+          <span>{data.userInfo?.displayName}</span>
         </div>
         <div className="userIcon">
           <img src={add} alt="" />

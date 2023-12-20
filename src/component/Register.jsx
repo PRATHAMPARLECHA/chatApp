@@ -37,7 +37,7 @@ export default function Register({ onLogin, onHome }) {
               email,
               photoURL: downloadURL,
             });
-            await setDoc(doc(db, "userchat", res.user.uid),{});
+            await setDoc(doc(db, "userChats", res.user.uid),{});
             onHome()
           });
         }

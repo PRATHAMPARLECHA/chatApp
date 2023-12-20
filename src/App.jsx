@@ -3,18 +3,19 @@ import Login from "./component/Login.jsx";
 import Register from "./component/Register.jsx";
 import Home from "./component/Home.jsx";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext, AuthContextProvider } from "./store/AuthContext.jsx";
+import { AuthContext } from "./store/AuthContext.jsx";
+import { UserContext } from "./store/userContext.jsx";
 
 function App() {
   const [didPage, setIsPage] = useState("register");
 
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
+
   useEffect(() => {
-    if(!currentUser){
+    if (!currentUser) {
       setIsPage("login");
     }
-  }, [currentUser])
+  }, [currentUser]);
   function HandleLogin() {
     setIsPage("login");
   }
