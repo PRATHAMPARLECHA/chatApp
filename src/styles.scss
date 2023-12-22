@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Mina&family=Nunito:wght@300&family=Poppins:wght@300&family=Roboto:wght@100&display=swap');
+
 :root{
-    --LIGHT_BG: #3A4750;
-    --DARK_BG: #303841;
-    --LIGHT_COLOR: #F3F3F3;
-    --DARK_COLOR: #2185D5;
+    --DARK_BLACK: #303440;
+    --BLACK: #0f1013;
+    --WHITE: #F3F3F3;
+    --BLUISH: #345aeb;
+    --LIGHT_BORDER: #3333339e;
+    --BLACK_OP: rgba(0, 0, 0, 0.675);
 }
 
 * {
@@ -10,16 +14,19 @@
     margin: 0;
     box-sizing: border-box;
 }
+body{
+    font-family: 'Nunito', sans-serif;
+}
 
 .formContainer {
-    background-color: var(--LIGHT_BG);
+    background-color: var(--DARK_BLACK);
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 
     .formWrapper {
-        background-color: var(--DARK_BG);
+        background-color: var(--BLACK);
         padding: 20px 60px;
         border-radius: 10px;
         display: flex;
@@ -28,14 +35,14 @@
         gap: 10px;
 
         .logo {
-            color: var(--LIGHT_COLOR);
+            color: var(--WHITE);
             font-weight: bold;
             font-size: 24px;
         }
 
         .title {
-            color: var(--LIGHT_COLOR);
-            font-size: 12px;
+            color: var(--WHITE);
+            font-size: 16px;
         }
 
         form {
@@ -47,41 +54,48 @@
                 padding: 10px;
                 border: none;
                 width: 250px;
-                border-bottom: 1px solid #a7bcff;
+                border: 2px solid var(--LIGHT_BORDER);
+                border-radius: 5px;
+                background-color: transparent;
+                color: var(--WHITE);
 
                 &::placeholder {
-                    color: darkslateblue;
-                    font-weight: bold;
+                    color: var(--WHITE);
+                }
+                &:focus{
+                    outline: 3px solid var(--BLUISH);
+                    border-radius: 5px;
                 }
             }
 
             button {
-                background-color: #7b96ec;
-                color: whitesmoke;
+                background-color: var(--BLUISH);
+                color: var(--WHITE);
                 padding: 10px;
                 border: none;
                 cursor: pointer;
                 font-weight: bold;
+                border-radius: 5px
             }
 
             label {
                 display: flex;
                 align-items: center;
                 gap: 3px;
-                color: #8d4af1;
+                color: var(--BLUISH);
                 font-size: 15px;
                 cursor: pointer;
             }
 
-            label img {
-                width: 30px;
-                height: 30px;
+            label svg {
+                width: 20px;
+                height: 20px; 
             }
 
         }
 
         p {
-            color: #5d5b8d;
+            color: var(--BLUISH);
             font-size: 15px;
             margin-top: 10px;
             cursor: pointer;
@@ -106,16 +120,16 @@
 
     .sidebar {
         flex: 1;
-        background-color: #5d5b8d;
+        background-color: var(--BLACK);
 
         .navbar {
             display: flex;
-            background-color: #2f2d52;
+            background-color: var(--BLACK);
             align-items: center;
             padding: 10px;
             height: 50px;
             justify-content: space-between;
-            color: whitesmoke;
+            color: var(--WHITE);
 
             .logo {
                 font-weight: bold;
@@ -127,7 +141,7 @@
                 align-items: center;
 
                 img {
-                    background-color: whitesmoke;
+                    background-color: var(--WHITE);
                     border-radius: 50%;
                     width: 24px;
                     height: 24px;
@@ -135,9 +149,10 @@
                 }
 
                 button {
-                    background-color: #7b96ec;
+                    background-color: var(--BLUISH);
                     border: none;
-                    font-size: 15px;
+                    border-radius: 5px;
+                    font-size: 12px;
                     color: whitesmoke;
                     font-weight: normal;
                     padding: 5px;
@@ -147,41 +162,52 @@
         }
 
         .searchbar {
-            border-bottom: 1px solid grey;
+            // border-bottom: 1px solid grey;
 
             .serachform {
                 padding: 10px;
 
                 input {
-                    background-color: transparent;
+                    background-color: var(--DARK_BLACK);
                     border: none;
-                    color: whitesmoke;
+                    color: var(--WHITE);
                     outline: none;
-                    font-size: 20px;
+                    // font-size: 20px;
+                    height: 2rem;
+                    width: 100%;
+                    border-radius: 8px;
+                    padding-left: 5px;
 
                     &::placeholder {
-                        color: #333;
-                        font-size: 17px;
+                        color: var(--WHITE);
+                        font-size: 13px;
+                        
                     }
                 }
             }
         }
 
         .userChat {
+            margin: 10px;
             padding: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
-            color: white;
+            color: var(--WHITE);
             cursor: pointer;
 
             &:hover {
-                background-color: #2f2d52;
+                background-color: var(--BLUISH);
             }
+            &:active{
+                background-color: var(--BLUISH);
+            } 
+            
+            
 
             img {
-                width: 50px;
-                height: 50px;
+                width: 35px;
+                height: 35px;
                 border-radius: 50%;
                 object-fit: cover;
             }
@@ -273,6 +299,7 @@
                         background-color: whitesmoke;
                         padding: 10px;
                         border-radius: 0 10px 10px 10px;
+                        max-width: max-content;
                     }
                     img{
                         width: 50%;

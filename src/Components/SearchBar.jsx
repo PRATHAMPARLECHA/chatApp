@@ -66,7 +66,7 @@ export default function SearchBar() {
         <input
           type="text"
           value={userName}
-          placeholder="search the person"
+          placeholder="search"
           onKeyDown={handleKey}
           onChange={handleChange}
         />
