@@ -3,7 +3,13 @@ import folder from "../image/file-solid-24.png";
 import send from "../image/send-regular-24.png";
 import { AuthContext } from "../store/AuthContext";
 import { UserContext } from "../store/userContext";
-import { arrayUnion, doc, serverTimestamp, Timestamp, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  serverTimestamp,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
@@ -55,18 +61,18 @@ export default function Input() {
         }),
       });
     }
-    await updateDoc(doc(db,"userChats", currentUser.uid), {
-      [data.chatId+".lastMessage"]: {
+    await updateDoc(doc(db, "userChats", currentUser.uid), {
+      [data.chatId + ".lastMessage"]: {
         text,
       },
-      [data.chatId+'.date']: serverTimestamp()
-    })
-    await updateDoc(doc(db,"userChats", data.userInfo.uid), {
-      [data.chatId+".lastMessage"]: {
+      [data.chatId + ".date"]: serverTimestamp(),
+    });
+    await updateDoc(doc(db, "userChats", data.userInfo.uid), {
+      [data.chatId + ".lastMessage"]: {
         text,
       },
-      [data.chatId+'.date']: serverTimestamp()
-    })
+      [data.chatId + ".date"]: serverTimestamp(),
+    });
     setText("");
     setImg(null);
   }
@@ -83,10 +89,26 @@ export default function Input() {
           onChange={handleImgChange}
         />
         <label htmlFor="file">
-          <img src={folder} alt="" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            style={{ fill: "rgba(255, 255, 255, 1)" }}
+          >
+            <path d="M6 22h12a2 2 0 0 0 2-2V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm7-18 5 5h-5V4zM8 14h3v-3h2v3h3v2h-3v3h-2v-3H8v-2z"></path>
+          </svg>
         </label>
         <button onClick={handleSendChats}>
-          <img src={send} alt="" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            style={{ fill: "rgba(255, 255, 255, 1)" }}
+          >
+            <path d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"></path>
+          </svg>
         </button>
       </div>
     </div>

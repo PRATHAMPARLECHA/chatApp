@@ -22,6 +22,7 @@ export default function Chat() {
   function handleUserClick(user) {
     dispatcherFn({ type: "SWITCH_USER", payload: user });
   }
+
   return (
     <div className="chat">
       {Object.entries(chats)?.sort((a,b) => b[1].date - a[1].date).map((chat) => (
