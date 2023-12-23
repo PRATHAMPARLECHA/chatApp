@@ -6,7 +6,7 @@
     --WHITE: #F3F3F3;
     --BLUISH: #345aeb;
     --LIGHT_BORDER: #3333339e;
-    --BLACK_OP: rgba(0, 0, 0, 0.675);
+    --blackish: #161a1d;
 }
 
 * {
@@ -220,7 +220,7 @@ body{
 
                 p {
                     font-size: 14px;
-                    color: lightgray;
+                    color: var(--WHITE);
                 }
             }
         }
@@ -232,10 +232,10 @@ body{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #2f2d52;
+            background-color: var(--blackish);
             height: 50px;
             padding: 10px;
-            color: whitesmoke;
+            color: var(--WHITE);
 
             .userDetails {
                 display: flex;
@@ -258,9 +258,9 @@ body{
                 display: flex;
                 gap: 8px;
 
-                img {
-                    width: 40px;
-                    height: 40px;
+                svg {
+                    width: 30px;
+                    height: 30px;
                     cursor: pointer;
                 }
             }
