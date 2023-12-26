@@ -18,7 +18,7 @@ export default function Login({ onRegister, onHome }) {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">SyncChat</span>
+        <span className="logo">chatHive</span>
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
           <input type="email" placeholder="email" />
