@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
       'process.env.VITE_projectId': JSON.stringify(env.VITE_projectId),
       'process.env.VITE_storageBucket': JSON.stringify(env.VITE_storageBucket),
       'process.env.VITE_messagingSenderId': JSON.stringify(env.VITE_messagingSenderId),
-      'process.env.VITE_appId': JSON.stringify(env.VITE_appId),
+      'process.env.VITE_appId': JSON.stringify(env.VITE_appId)
     },
     plugins: [react()],
   }
