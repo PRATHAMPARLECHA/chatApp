@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce",
+  "name": "chatapp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "boxicons": "^2.1.4",
+    "dotenv": "^16.4.5",
     "firebase": "^10.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

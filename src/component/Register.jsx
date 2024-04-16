@@ -51,7 +51,7 @@ export default function Register({ onLogin, onHome }) {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">chatHive</span>
+        <span className="logo">SyncChat</span>
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="name" />
