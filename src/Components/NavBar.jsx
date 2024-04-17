@@ -3,6 +3,7 @@ import { auth } from "../firebase";
 import { useContext } from "react";
 import { AuthContext } from "../store/AuthContext";
 
+
 export default function NavBar() {
     const {currentUser} = useContext(AuthContext)
     return <div className="navbar">
